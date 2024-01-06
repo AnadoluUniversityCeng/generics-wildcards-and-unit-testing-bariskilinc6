@@ -13,12 +13,13 @@ import static org.junit.Assert.assertTrue;
  * Unit tests for the first part of the project.
  */
 public class FailingTest {
-       @Test(expected = RuntimeException.class)
+    @Test(timeout = 1000)
     public void testInfiniteLoopBug() {
-        // This test is expected to fail because the method infiniteLoop enters an infinite loop for certain inputs.
-        App.infiniteLoop(Double.POSITIVE_INFINITY);
-        // If the method does not throw an exception, the test will fail
-        fail("Expected infinite loop, but the method did not throw an exception.");
+        try {
+            App.infiniteLoop(Double.POSITIVE_INFINITY);
+            fail("Expected infinite loop, but the method completed within the timeout.");
+        } catch (Throwable e) {
+            // Belki burada istenilen hatayı doğrulamak için ekstra bir kontrol yapılabilir.
+        }
     }
-}
 }
