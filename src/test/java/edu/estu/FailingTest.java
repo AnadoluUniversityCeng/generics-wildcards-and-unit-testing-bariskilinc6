@@ -19,7 +19,7 @@ public class FailingTest {
             App.infiniteLoop(Double.POSITIVE_INFINITY);
             fail("Expected infinite loop, but the method completed within the timeout.");
         } catch (Throwable e) {
-            // Belki burada istenilen hatayı doğrulamak için ekstra bir kontrol yapılabilir.
+            // Additional verification might be added here to assert the expected error.
         }
     }
 }
