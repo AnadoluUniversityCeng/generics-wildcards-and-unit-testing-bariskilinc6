@@ -13,23 +13,17 @@ import static org.junit.Assert.assertTrue;
  * Unit tests for the first part of the project.
  */
 public class FailingTest {
-      public class UserLoginTest {
+       @Test(timeout = 1000)
+    public void testInfiniteLoop() {
+        InfiniteLoopClass infiniteLoopObject = new InfiniteLoopClass();
 
-    // Testing a deliberate scenario where the user login method intentionally goes into an infinite loop
-    @Test(timeout = 1000) // Setting a timeout to prevent the infinite loop
-    public void testInfiniteLoopOnUserLogin() {
-        UserLoginService loginService = new UserLoginService();
+        // Triggering the infinite loop with specific user input
+        int userInput = 0; // Change this to the specific input triggering the infinite loop
+        
+        // Call the method that enters the infinite loop
+        infiniteLoopObject.infiniteLoop(userInput);
 
-        try {
-            // Invoking the method that enters an infinite loop
-            loginService.infiniteUserLogin();
-        } catch (Throwable expected) {
-            // If an infinite loop error is caught, the test is considered successful
-            return;
-        }
-
-        // If no infinite loop error is caught within the specified time, the test fails
-        throw new AssertionError("No infinite loop error occurred!");
+        // If the code reaches here, the method didn't enter an infinite loop as expected
+        fail("The infinite loop was not triggered as expected");
     }
-}
 }
