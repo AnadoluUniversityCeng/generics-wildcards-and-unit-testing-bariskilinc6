@@ -59,15 +59,25 @@ public class App {
      * https://nurkiewicz.com/2019/03/mapmerge-one-method-to-rule-them-all.html
      */
     static <> void {
+        static <T> void incrementCountGenerics(Map<T , Integer> map, T key) {
+            map.merge(key, 1 ,(oldVa1 , newVa1) -> oldVa1 + newVa1);
     }
 
-    static void {
+    static void 
+        static void incrementCOuntMapWildcard(Map<?, Integer> map Object key) {
+        ((Map<Object, Integer>) map).merge(key, 1, (oldVa1 , newVa1) -> oldVa1 + newVa1);
     }
 
     static <> void {
+        static<T extends Enum<T>> void incrementCountMapEnumDescg(map<EnumDesc<T>, Integer> map,
+        Enum.EnumDesc<T> key){
+            map.merge(key, 1 ,(oldVa1 , newVa1) -> oldVa1 + newVa1);
+        } 
     }
 
     static void {
+        static void incrementCountMapEnumDescW(Map<? extends Enum.EnumDescs<?>, Integer>map, Enum.EnumDesc<?> key) {
+            ((Map<Enum.EnumDesc<?>, Integer>) map).merge(key, 1, (oldVa1 , newVa1) -> oldVa1 + newVa1);
     }
 }
 
